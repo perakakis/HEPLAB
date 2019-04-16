@@ -45,32 +45,20 @@ function eegplugin_heplab(fig, trystrs, catchstrs)
         error('eegplugin_heplab requires 3 arguments');
     end;
     
+    p = which('eegplugin_heplab','-all');
+    p = p{1};
+    p = p(1:findstr(p,'eegplugin_heplab.m')-1);
+    addpath(genpath(p))
+  
     % find tools menu
     % ---------------
     toolsmenu = findobj(fig, 'tag', 'tools');
     
-    
-    
-    %menu = findobj(fig, 'tag', 'tools'); 
-    % tag can be 
-    % 'import data'  -> File > import data menu
-    % 'import epoch' -> File > import epoch menu
-    % 'import event' -> File > import event menu
-    % 'export'       -> File > export
-    % 'tools'        -> tools menu
-    % 'plot'         -> plot menu
-
-    % command to check that the '.source' is present in the EEG structure 
-    % -------------------------------------------------------------------
-   
-    
-    % menu callback commands
-    % ----------------------
-    %heplab = [trystrs.no_check '[HEP, hepgui] = heplab_readvars(EEG);' catchstrs.new_and_hist ];
-   
+       
+  
     % create menus
     % ------------
-    hepmenu = uimenu( toolsmenu,'Label','HEPlab','separator','on',...
+    hepmenu = uimenu( toolsmenu,'Label','HEPLAB','separator','on',...
         'tag','heplab','userdata',...
         'startup:off;continuous:on;epoch:off;study:off;erpset:off',...
         'Callback','pop_heplab');
