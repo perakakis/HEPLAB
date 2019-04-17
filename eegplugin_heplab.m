@@ -49,13 +49,11 @@ function eegplugin_heplab(fig, trystrs, catchstrs)
     p = p{1};
     p = p(1:findstr(p,'eegplugin_heplab.m')-1);
     addpath(genpath(p))
-  
+    
     % find tools menu
     % ---------------
     toolsmenu = findobj(fig, 'tag', 'tools');
-    
-       
-  
+      
     % create menus
     % ------------
     hepmenu = uimenu( toolsmenu,'Label','HEPLAB','separator','on',...
