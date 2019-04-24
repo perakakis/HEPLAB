@@ -20,6 +20,10 @@ if ~exist('HEP','var')
     heplab_load_ECG
 end
 
+if ~exist('HEP','var')
+    return
+end
+
 % close heplab window. There can be only one!
 if exist ('hepgui','var') && isfield(hepgui,'main')
     if ishandle(hepgui.main)
@@ -332,7 +336,7 @@ set(hepgui.main, 'WindowButtonDownfcn',[...
 hepgui.menu_about = uimenu(hepgui.main,'Label','About');
 hepgui.menu_edit = uimenu(hepgui.main,'Label','Edit');
 hepgui.menu_tools = uimenu(hepgui.main,'Label','Tools');
-hepgui.menu_helps = uimenu(hepgui.main,'Label','Help');
+hepgui.menu_help = uimenu(hepgui.main,'Label','Help');
 
 % about submenu
 hepgui.subm_about=uimenu(hepgui.menu_about,'Label','About HEPLAB',...
@@ -404,3 +408,7 @@ hepgui.subm_save_hep=uimenu(hepgui.menu_edit,'Label','Save HEP',...
 % load hep
 hepgui.subm_load_hep=uimenu(hepgui.menu_edit,'Label','Load HEP',...
     'CallBack', 'heplab_load_HEP');
+
+% help submenu
+hepgui.subm_help=uimenu(hepgui.menu_help,'Label','Visit the GitHub page',...
+    'Callback','web(''https://github.com/perakakis/HEPLAB'',''-browser'')');
