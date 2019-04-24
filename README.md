@@ -65,7 +65,7 @@ If you have previously saved a file containing a HEP structure, you can use this
 
 ### Tools
 #### Detect R waves
-- **ecglab fast** and **ecglab slow** are two very similar peak detection algorithms included in the *ECGLAB*, developed by the group of João Luiz Azevedo de Carvalho at the University of Brasilia, DF, Brasil. Details about the algorithm are given in [Carvalho et al., 2002](Documentation/Articles/icsp2002_ecglab.pdf).
+- **ecglab fast** and **ecglab slow** are two very similar peak detection algorithms included in the *ECGLAB*, developed by the group of João Luiz Azevedo de Carvalho at the University of Brasilia, DF, Brasil. Details about the algorithm are given in [Carvalho et al., 2002](Documentation/Articles/icsp2002_ecglab.pdf).
 - **Pan-Tompkin** implements the [Pan & Tompkins, 1985](Documentation/Articles/PanTompkins.pdf) algorith using the function `BioSigKit.PanTompkins()` that is distributed with the [BioSigKit toolbox](http://joss.theoj.org/papers/10.21105/joss.00671), developed by 
 [Hooman Sedghamiz](https://github.com/hooman650).
 
@@ -154,6 +154,6 @@ The peak detection functions are normally called from the GUI but advanced users
 |--- SampleData                         <-------- Sample data folder
     |--- EEG1.set                       <-------- EEGLAB set file used in the test case
 |--- Documentation                      <-------- Manual and relevant articles
-|--- LICENCE                            <-------- Test Cases
+|--- LICENCE                            <-------- GPL License
 ```
 
