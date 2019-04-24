@@ -1,7 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2649943.svg)](https://doi.org/10.5281/zenodo.2649943)
 
 # HEPLAB
-HEPLAB is an [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) plugin for the automatic detection of cardiac-related events from the raw ECG signal. Users can choose among three different algorithms for **R wave** detection and one algorithm for **T wave** detection. An intuitive Graphical User Interface (GUI) displays cardiac events and allows users to manually correct for artifacts. Events can then be exported to EEGLAB's EEG structure to facilitate the posterior analysis of the Heartbeat Evoked Potential (HEP). Although HEPLAB was originally designed as an EEGLAB plugin it can also be used as a standalone Matlab toolbox.
+HEPLAB is an [EEGLAB](https://sccn.ucsd.edu/eeglab/index.php) extension for the automatic detection of cardiac-related events from the raw ECG signal. Users can choose among three different algorithms for **R wave** detection and one algorithm for **T wave** detection. An intuitive Graphical User Interface (GUI) displays cardiac events and allows users to manually correct for artifacts. Events can then be exported to EEGLAB's EEG structure to facilitate the posterior analysis of the Heartbeat Evoked Potential (HEP). Although HEPLAB was originally designed as an EEGLAB extension it can also be used as a standalone Matlab toolbox.
 
 # How to cite
 Perakakis, P. (2019). HEPLAB: a Matlab graphical interface for the preprocessing of the heartbeat-evoked potential (Version v1.0.0). Zenodo. http://doi.org/10.5281/zenodo.2649943
