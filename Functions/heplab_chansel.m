@@ -1,33 +1,12 @@
-% pop_chansel() - pop up a graphic interface to select channels
+% heplab_chansel - GUI to select ECG channel, called by pop_heplab.m
 %
-% Usage:
-%   >> [chanlist] = pop_chansel(chanstruct); % a window pops up
-%   >> [chanlist strchannames cellchannames] = ...
-%                        pop_chansel(chanstruct, 'key', 'val', ...);
+% Modified version of pop_chansel() function included in EEGLAB
+% 
+% Copyright (C) 2019 Pandelis Perakakis, Granada University, peraka@ugr.es
 %
-% Inputs:
-%   chanstruct     - channel structure. See readlocs()
-%
-% Optional input:
-%   'withindex'      - ['on'|'off'] add index to each entry. May also a be 
-%                      an array of indices
-%   'select'         - selection of channel. Can take as input all the
-%                      outputs of this function.
-%   'selectionmode' - selection mode 'multiple' or 'single'. See listdlg2().
-%
-% Output:
-%   chanlist      - indices of selected channels
-%   strchannames  - names of selected channel names in a concatenated string
-%                   (channel names are separated by space characters)
-%   cellchannames - names of selected channel names in a cell array
-%
-% Author: Arnaud Delorme, CNL / Salk Institute, 3 March 2003
-
-% Copyright (C) 3 March 2003 Arnaud Delorme, Salk Institute, arno@salk.edu
-%
-% This program is free software; you can redistribute it and/or modify
+% This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
-% the Free Software Foundation; either version 2 of the License, or
+% the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
 %
 % This program is distributed in the hope that it will be useful,
@@ -36,8 +15,7 @@
 % GNU General Public License for more details.
 %
 % You should have received a copy of the GNU General Public License
-% along with this program; if not, write to the Free Software
-% Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 function [chanlist,chanliststr, allchanstr] = heplab_chansel(chans, varargin)
     

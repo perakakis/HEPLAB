@@ -1,44 +1,53 @@
+% heplab_ecgplot - Plots the ECG signal, called by heplab.m
+%
+% Modified version of ecglabRR included in ECGLAB
+% 
+% Copyright (C) 2019 Pandelis Perakakis, Granada University, peraka@ugr.es
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 function handle=heplab_ecgplot(signal, srate, qrs, sec_ini, handle, winsec)
-% PLOTAecg plota um trecho do ecg indicado
-% usage: handle=heplab_ecgplot(ecg, eventos, qrs, indicedossec_ini, signaltype,handle,winsec,main_window)
-% 	ecg=vetor com as amostras
-%  eventos=vetor com os indices dos eventos
-%  qrs=vetor com a onda R marcada
-%	sec_ini=um numero entre 0 e o numero de sec_ini
-%  signaltype=pode ser 'ecg' ou 'rsp'
-%  handle=handle para o axes onde foi plotado
-%  main_window=handle da win principal
 
-%apaga o plot anterior
-
+% delete previous plot
 if handle~=-1,
     delete(handle);
 end
 
-%cria o eixo inteiro do time
-time=0:1/srate:(length(signal)-1)/srate;
+% convert to single column
+signal = signal(:);
 
-%calcula numero de sec_ini e de amostras do segmento
+% calculate sec_ini
 sec_ini=sec_ini+1/srate;
 win=floor(winsec*srate);
 
-%insere um zero depois da ultima amostra
+% zero after last sample
 signal=[signal;0];
 
-%delimita os sinais ? regiao plotada
+% segment signal to be plotted
 ss = round(sec_ini*srate);
 ecg = signal;
 signal = signal(ss:ss+win);
 
-%cria eixo do time
+% create time axis
 t=sec_ini-1/srate:1/srate:sec_ini+winsec-1/srate;
 
-%cria o handle da regiao do plot
+% create handle
 handle=axes('Units','normalized','FontUnits','normalized',...
     'position',[0.03916866506794564 0.2755905511811024 0.9200639488409272 0.6902887139107612]...
 );
 
-%plota o ecg, os eventos e a marcacao R-R
+% plot ECG and IBIs
 if isempty(qrs),
     plot(t,signal,'b-');
     r_ind=[];
@@ -50,17 +59,16 @@ else
     plot(t,signal,'b-',t,qrs,'ro');
 end
 
-%mostra os indices dos intervalos
-[RRinterval, RRtimes]=heplab_calculate_RR(r_ind,length(ecg)*1/srate,srate);
+% fing events within window
+[RRinterval, RRtimes]=heplab_calculate_IBIs(r_ind,length(ecg)*1/srate,srate);
 if RRinterval(1)~=-1,
     
-    %encontra ondas R dentro da win
     display=find(RRtimes>=t(1) & RRtimes<=t(length(t)));
     r_ind_aux=r_ind(display);
     RRtimes=RRtimes(display);
     RRinterval=RRinterval(display);
     
-    %so mostra o valor dos intervalos para wins de 10 sec_ini ou menos
+    % show event indexes when win < 10sec
     if winsec <=10,
         for i=1:length(RRinterval),
             xRR=RRtimes(i);
@@ -73,6 +81,6 @@ if RRinterval(1)~=-1,
 end
 
 grid
-axis([t(1) t(length(t)) -1.1 1.1])
+axis([t(1) t(length(t)) -0.1 1.1])
 xlabel('Time (sec)','fontsize',12)
 ylabel('Normalized amplitude','fontsize',12)
