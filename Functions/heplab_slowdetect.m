@@ -49,7 +49,7 @@ N = round(0.150*fs); ecg_flt=1/N*filter(ones(1,N),1,ecg_flt);
 
 % start slow algorith
 % find peak
-step = 0.200*fs;
+step = round(0.200*fs);
 area = 2*fs;
 ret = 0.160*fs;
 

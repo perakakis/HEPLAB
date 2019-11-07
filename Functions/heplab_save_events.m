@@ -24,7 +24,6 @@ types = repmat({'ECG'},1, length(evt));
 [EEG.event(1,k+1:k+length(HEP.qrs)).type] = types{:}; % assign types
 [EEG.event(1,k+1:k+length(HEP.qrs)).urevent] = urevents{:}; % assign event index
 
-
 % save new set
 [ALLEEG,EEG,CURRENTSET] = pop_newset(ALLEEG,EEG,CURRENTSET);
 clear k evt urevents types
