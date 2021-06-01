@@ -27,7 +27,8 @@ if length(qrs)>1,
     
     % calculate IBIs
     RR=RRtimes(1:length(RRtimes)-1);
-    RRinterval=diff(RRtimes);
+    RR1=RRtimes(2:length(RRtimes));
+    RRinterval=diff(RRtime);
     
     % convert to sec and remove first interval
     RRtimes=RRtimes(2:length(RRtimes))/1000;

@@ -59,7 +59,7 @@ else
     plot(t,signal,'b-',t,qrs,'ro');
 end
 
-% fing events within window
+% find events within window
 [RRinterval, RRtimes]=heplab_calculate_IBIs(r_ind,length(ecg)*1/srate,srate);
 if RRinterval(1)~=-1,
     
