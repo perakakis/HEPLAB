@@ -1,6 +1,7 @@
 % heplab - Main GUI
 %
-% Copyright (C) 2019 Pandelis Perakakis, Granada University, peraka@ugr.es
+% Copyright (C) 2019 Pandelis Perakakis, Complutense University of Madrid,
+% pperakakis@ucm.es
 %
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
